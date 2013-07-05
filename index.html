@@ -1,116 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>{% if not is_front_page %}{{ meta.title }} &middot; {% endif %}{{ site_title }}</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="author" content="">
+	<head>
+		<meta charset="utf-8">
+		<title>{% if not is_front_page %}{{ meta.title }} &middot; {% endif %}{{ site_title }}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
 
-	<!-- Le styles -->
-	<link href="{{ theme_url }}/asset/css/bootstrap.css" rel="stylesheet">
-	<style type="text/css">
-	body {
-		padding-top: 20px;
-		padding-bottom: 40px;
-	}
+		<!-- Le styles -->
+		<link href="{{ theme_url }}/asset/css/bootstrap.css" rel="stylesheet">
+		<style type="text/css">
+		body {
+			padding-top: 20px;
+			padding-bottom: 40px;
+		}
 
-	/* Custom container */
-	.container-narrow {
-		margin: 0 auto;
-		max-width: 700px;
-	}
-	.container-narrow > hr {
-		margin: 30px 0;
-	}
+		/* Custom container */
+		.container-narrow {
+			margin: 0 auto;
+			max-width: 700px;
+		}
+		.container-narrow > hr {
+			margin: 30px 0;
+		}
 
-	/* Main marketing message and sign up button */
-	.jumbotron {
-		margin: 60px 0;
-		text-align: center;
-	}
-	.jumbotron h1 {
-		font-size: 72px;
-		line-height: 1;
-	}
-	.jumbotron .btn {
-		font-size: 21px;
-		padding: 14px 24px;
-	}
+		/* Main marketing message and sign up button */
+		.jumbotron {
+			margin: 60px 0;
+			text-align: center;
+		}
+		.jumbotron h1 {
+			font-size: 72px;
+			line-height: 1;
+		}
+		.jumbotron .btn {
+			font-size: 21px;
+			padding: 14px 24px;
+		}
 
-	/* Supporting marketing content */
-	.marketing {
-		margin: 60px 0;
-	}
-	.marketing p + h4 {
-		margin-top: 28px;
-	}
+		/* Supporting marketing content */
+		.marketing {
+			margin: 60px 0;
+		}
+		.marketing p + h4 {
+			margin-top: 28px;
+		}
 
-	/* Better Transitions */
-	* {
-		-webkit-transition: 1s;
-		-moz-transition: 1s;
-		-o-transition: 1s;
-		-ms-transition: 1s;
-		transition: 1s;
-	}
-	</style>
-	<link href="{{ theme_url }}/asset/css/bootstrap-responsive.css" rel="stylesheet">
+		/* Better Transitions */
+		* {
+			-webkit-transition: 1s;
+			-moz-transition: 1s;
+			-o-transition: 1s;
+			-ms-transition: 1s;
+			transition: 1s;
+		}
+		</style>
+		<link href="{{ theme_url }}/asset/css/bootstrap-responsive.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="container-narrow">
+			
+			{% if not is_front_page %}
+			<div class="masthead">
+				<ul class="nav nav-pills pull-right">
+					{% for page in pages %}
+						{% if not page.date %}
+						<li><a href="{{ page.url }}">{{ page.title }}</a></li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+				<h3 class="muted"><a href="{{ base_url }}">{{ site_title }}</a></h3>
+			</div>
 
-	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-		<!--[if lt IE 9]>
-			<script src="{{ theme_url }}/asset/js/html5shiv.js"></script>
-			<![endif]-->
-
-			<!-- Fav and touch icons -->
-			<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ theme_url }}/asset/ico/apple-touch-icon-144-precomposed.png">
-			<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ theme_url }}/asset/ico/apple-touch-icon-114-precomposed.png">
-			<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ theme_url }}/asset/ico/apple-touch-icon-72-precomposed.png">
-			<link rel="apple-touch-icon-precomposed" href="{{ theme_url }}/asset/ico/apple-touch-icon-57-precomposed.png">
-			<link rel="shortcut icon" href="{{ theme_url }}/asset/ico/favicon.png">
-		</head>
-
-		<body>
-
-			<div class="container-narrow">
-				
-				{% if not is_front_page %}
-				<div class="masthead">
-					<ul class="nav nav-pills pull-right">
-						{% for page in pages %}
-							{% if not page.date %}
-							<li><a href="{{ page.url }}">{{ page.title }}</a></li>
-							{% endif %}
-						{% endfor %}
-					</ul>
-					<h3 class="muted"><a href="{{ base_url }}">{{ site_title }}</a></h3>
-				</div>
-
-				<hr>
-				{% endif %}
+			<hr>
+			{% endif %}
 			
 			{% if is_front_page %}
-				<div class="jumbotron">
-					<h1>A Year In Industry</h1>
-					<div class="lead">
-						{{ content }}
+			<div class="jumbotron">
+				<h1>A Year In Industry</h1>
+				<div class="lead">
+					{{ content }}
+				</div>
+			</div>
+
+			<hr>
+
+			{% for page in pages %}
+				{% if page.date %}
+				<div class="row-fluid post-listing">
+					<div class="span3 text-right hidden-phone">
+						<p class="meta muted">{{ page.date_formatted }}</p>
+					</div>
+					<div class="span9">
+						<p><a href="{{ page.url }}">{{ page.title }}</a></p>
 					</div>
 				</div>
-
-				<hr>
-
-				{% for page in pages %}
-					{% if page.date %}
-					<div class="row-fluid post-listing">
-						<div class="span3 text-right hidden-phone">
-							<p class="meta muted">{{ page.date_formatted }}</p>
-						</div>
-						<div class="span9">
-							<p><a href="{{ page.url }}">{{ page.title }}</a></p>
-						</div>
-					</div>
-					{% endif %}
-				{% endfor %}
+				{% endif %}
+			{% endfor %}
 			{% else %}
 			<div class="row-fluid marketing">
 				<div class="span12">
@@ -130,7 +116,7 @@
 					{% endif %}
 				</div>
 				<div class="span4 text-center muted">
-					<p>cc-by-sa<br><a href="http://www.wduyck.com/">William Duyck</a></p>
+					<p>cc-by-sa<br><a href="http://www.youatyourdomain.com/">Your Name</a></p>
 				</div>
 				<div class="span4 text-right">
 					{% if next_page.date %}
@@ -142,4 +128,4 @@
 		</div> <!-- /container -->
 
 	</body>
-	</html>
+</html>
