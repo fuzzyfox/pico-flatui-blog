@@ -4,7 +4,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, fugiat, nisi, t
 ## Installation
 From the root directory of your [Pico](http://pico.dev7studios.com/) installation:
 
-	git clone http://github.com/fuzzyfox/pico-flatui-blog.git ./themes/flatui-blog
+	git clone https://github.com/fuzzyfox/pico-flatui-blog.git ./themes/flatui-blog
 
 Once you’ve downloaded yourself a copy of the theme, open up the Pico configuration file (`./config.php`) and add the following lines:
 
