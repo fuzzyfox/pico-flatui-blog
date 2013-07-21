@@ -7,6 +7,10 @@
 		<meta name="description" content="{{ meta.description }}">
 		<meta name="author" content="{{ meta.author }}">
 		<meta name="robots" content="{{ meta.robots }}">
+		
+		<!-- rss feed -->
+		<link rel="alternate" href="{{ base_url }}/feed" type="application/rss+xml" title="RSS">
+
 		<!-- Le styles -->
 		<link href="{{ theme_url }}/asset/css/bootstrap.css" rel="stylesheet">
 		<style type="text/css">
@@ -54,8 +58,7 @@
 			-ms-transition: 1s;
 			transition: 1s;
 		}
-		
-		/* Some sanity of images */
+
 		img {
 			max-width: 100%;
 			margin: auto;
@@ -84,7 +87,7 @@
 			
 			{% if is_front_page %}
 			<div class="jumbotron">
-				<h1>A Year In Industry</h1>
+				<h1>{{ site_title }}</h1>
 				<div class="lead">
 					{{ content }}
 				</div>
@@ -123,7 +126,7 @@
 					{% endif %}
 				</div>
 				<div class="span4 text-center muted">
-					<p>cc-by-sa<br><a href="http://www.youatyourdomain.com/">Your Name</a></p>
+					<p>cc-by-sa<br>{{ meta.author }}</p>
 				</div>
 				<div class="span4 text-right">
 					{% if next_page.date %}
