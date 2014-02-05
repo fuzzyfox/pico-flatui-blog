@@ -1,0 +1,22 @@
+			<hr>
+
+			<div class="footer row-fluid">
+				<div class="span4">
+					{% if prev_page.date %}
+					<a class="btn" href="{{ prev_page.url }}">&laquo; prev</a>
+					{% endif %}
+				</div>
+				<div class="span4 text-center muted">
+					<p>cc-by-sa<br>{{ meta.author }}</p>
+				</div>
+				<div class="span4 text-right">
+					{% if next_page.date %}
+					<a class="btn" href="{{ next_page.url }}">next &raquo;</a>
+					{% endif %}
+				</div>
+			</div>
+
+		</div> <!-- /container -->
+
+	</body>
+</html>
