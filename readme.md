@@ -8,7 +8,7 @@ From the root directory of your [Pico](http://pico.dev7studios.com/) installatio
 
 Once you’ve downloaded yourself a copy of the theme, open up the Pico configuration file (`./config.php`) and add the following lines:
 
-	$config['theme']          = 'flatui-blog';
+	$config['theme']          = 'pico-flatui-blog';
 	$config['pages_order_by'] = 'date';
 	$config['pages_order']    = 'desc';
 	$config['date_format']    = 'D j<\s\u\p>S</\s\u\p> M Y';
